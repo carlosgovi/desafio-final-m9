@@ -1,0 +1,47 @@
+{
+  "name": "paswordless",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:carlosgovi/next-js-API.git",
+  "author": "carlosgovi <cgovi66@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next",
+    "test": "ava"
+  },
+  "type": "module",
+  "ava": {
+    "nodeArguments": [
+      "--loader=@esbuild-kit/esm-loader",
+      "--experimental-specifier-resolution=node"
+    ],
+    "environmentVariables": {
+      "TESTING": "true",
+      "JWT_SECRET": "asdasdasasdasda"
+    },
+    "extensions": {
+      "ts": "module"
+    }
+  },
+  "dependencies": {
+    "@esbuild-kit/esm-loader": "^2.5.5",
+    "ava": "^5.2.0",
+    "date-fns": "^2.29.3",
+    "esbuild-node-loader": "^0.8.0",
+    "firebase-admin": "^11.5.0",
+    "jsonwebtoken": "^9.0.0",
+    "mercadopago": "^1.5.15",
+    "micro-method-router": "^0.1.0",
+    "next": "^13.2.3",
+    "parse-bearer-token": "^1.0.1",
+    "random-seed": "^0.3.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "devDependencies": {
+    "@types/react": "18.0.28",
+    "typescript": "4.9.5"
+  }
+}
