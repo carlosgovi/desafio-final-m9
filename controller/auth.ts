@@ -2,6 +2,7 @@ import { Auth } from "models/auth";
 import { User } from "models/user";
 import addMinutes from "date-fns/addMinutes";
 import gen from "random-seed";
+import { sendMail } from "./sendgrid";
 
 var seed = "asdfasdgasdgasd";
 var random = gen.create(seed);
@@ -32,9 +33,12 @@ export async function sendCode(email: string) {
   const twentyMinutesFromNow = addMinutes(now, 20);
   auth.data.code = code;
   auth.data.expires = twentyMinutesFromNow;
+  ////auth.data.used es el estado de el codigo de auth cada vez que se crea es puesto en false
+  auth.data.used = false;
   await auth.push();
 
   ///aca iria la logica de sendgrid////////////////////////////////////////////////SENDGRID
+  await sendMail(email, code);
   console.log(
     "email enviado a : " + email + "con el codigo: " + auth.data.code
   );

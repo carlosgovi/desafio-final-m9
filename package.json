@@ -27,6 +27,7 @@
   },
   "dependencies": {
     "@esbuild-kit/esm-loader": "^2.5.5",
+    "@sendgrid/mail": "^7.7.0",
     "ava": "^5.2.0",
     "date-fns": "^2.29.3",
     "esbuild-node-loader": "^0.8.0",

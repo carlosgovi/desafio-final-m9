@@ -66,6 +66,7 @@ export class Auth {
     const result = await collection
       .where("email", "==", cleanEmail)
       .where("code", "==", code)
+
       .get();
 
     if (result.empty) {
@@ -75,7 +76,19 @@ export class Auth {
       const doc = result.docs[0];
       const auth = new Auth(doc.id);
       auth.data = doc.data();
+
+      // Verificar si el token ya ha sido utilizado
+      if (auth.data.used) {
+        console.error("Token ya ha sido utilizado");
+        return null;
+      }
+
+      // Actualizar el campo "used" a true  ////este campo se pone en true si el codigo fue utilizado
+      auth.data.used = true;
+      await auth.push();
+
       return auth;
     }
   }
 }
+//////solucionar que cuando cree el codigo nuevo otra vez cambie el data.used a false
