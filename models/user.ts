@@ -30,4 +30,10 @@ export class User {
     newUser.data = data;
     return newUser;
   }
+  ///get un solo user
+  static async getOneUser(userId) {
+    const user = (await collection.doc(userId).get()).data();
+
+    return user;
+  }
 }

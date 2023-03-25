@@ -18,7 +18,7 @@ export default async function (req: NextApiRequest, res: NextApiResponse) {
   }
   ///si el code no expiro retorno el token
   const token = generate({ userId: auth.data.userId });
-  console.log("token correcto");
+
   res.send({ token });
 
   ///este generador recibe el userId para asi poder generar el token

@@ -31,4 +31,15 @@ export class Order {
     newOrder.data.createdAt = new Date();
     return newOrder;
   }
+  static async getAllOrders() {
+    const getOrderSnap = await collection.get();
+
+    return getOrderSnap;
+  }
+  static async getOneOrder(id) {
+    ////a doc le paso el id del documento que hay esta el dato de la orden
+    const OrderSnap = (await collection.doc(id).get()).data();
+
+    return OrderSnap;
+  }
 }

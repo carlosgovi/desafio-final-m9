@@ -26,6 +26,8 @@
     }
   },
   "dependencies": {
+    "airtable": "^0.11.6",
+    "algoliasearch": "^4.15.0",
     "@esbuild-kit/esm-loader": "^2.5.5",
     "@sendgrid/mail": "^7.7.0",
     "ava": "^5.2.0",
