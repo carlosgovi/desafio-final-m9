@@ -1,6 +1,6 @@
 postman collection: https://documenter.getpostman.com/view/24276986/2s93RNyaXw
 
-Vercel deply: https://desafio-final-m9.vercel.app/
+Vercel deploy: https://desafio-final-m9.vercel.app/
 
 User de prueba utilizados:
 
