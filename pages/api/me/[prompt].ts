@@ -1,6 +1,8 @@
 import { NextApiRequest, NextApiResponse } from "next";
 import { User } from "models/user";
 import { authMiddleware } from "lib/middelwares";
+import { handlerCORS } from "lib/middelwares";
+
 async function handler(req: NextApiRequest, res: NextApiResponse, token) {
   const prompt: any = req.query.prompt;
 
@@ -20,4 +22,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse, token) {
   res.send(user.data);
 }
 
-export default authMiddleware(handler);
+const authMiddlewarePass = authMiddleware(handler);
+export default handlerCORS(authMiddlewarePass);

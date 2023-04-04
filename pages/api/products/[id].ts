@@ -2,6 +2,7 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import { getOffsetAndLimitFromRequest } from "lib/requests";
 import { index as productIndex } from "lib/algolia";
 import { authMiddleware } from "lib/middelwares";
+import { handlerCORS } from "lib/middelwares";
 // ejemplo de la request (((http://localhost:3000/api/products/attw1WlLKTAd2HZLo)))
 
 async function handler(req: NextApiRequest, res: NextApiResponse) {
@@ -17,4 +18,5 @@ async function handler(req: NextApiRequest, res: NextApiResponse) {
   });
 }
 
-export default authMiddleware(handler);
+const authMiddlewarePass = authMiddleware(handler);
+export default handlerCORS(authMiddlewarePass);

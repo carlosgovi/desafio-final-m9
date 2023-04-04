@@ -2,6 +2,7 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { User } from "models/user";
 import { authMiddleware } from "lib/middelwares";
 import method from "micro-method-router";
+import { handlerCORS } from "lib/middelwares";
 
 async function getHandler(req: NextApiRequest, res: NextApiResponse, token) {
   const user = new User(token.userId);
@@ -20,8 +21,6 @@ async function postHandler(req: NextApiRequest, res: NextApiResponse, token) {
   console.log({ datos });
 
   if (datos) {
-    console.log("pasa igualllllllllllllllllllllllllll");
-
     user.data = datos;
     await Promise.all([
       user.push(), // Espera a que se complete la operación de actualización
@@ -34,4 +33,6 @@ const handler = method({
   patch: postHandler,
   get: getHandler,
 });
-export default authMiddleware(handler);
+
+const authMiddlewarePass = authMiddleware(handler);
+export default handlerCORS(authMiddlewarePass);
